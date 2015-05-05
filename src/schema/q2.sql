@@ -1,0 +1,1 @@
+select film.* from lab_1.films film where film.year = YEAR(NOW()) - 1 or film.year = YEAR(NOW());
