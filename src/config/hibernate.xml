@@ -5,17 +5,22 @@
 <hibernate-configuration>
 	<session-factory>
 		<!-- Database connection properties - Driver, URL, user, password -->
-		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="hibernate.connection.url">jdbc:mysql://localhost/lab_1</property>
-		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.dialect"> org.hibernate.dialect.Oracle10gDialect		</property>
+		<property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+
+		<property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521/xe</property>
+		<property name="hibernate.connection.username">system</property>
 		<property name="hibernate.connection.password">1234567</property>
 
-		<!-- org.hibernate.HibernateException: No CurrentSessionContext configured! -->
-		<property name="hibernate.current_session_context_class">thread</property>
 		
+		<property name="hibernate.current_session_context_class">thread</property>
+
+		<!-- Schema creation -->
+		<property name="hbm2ddl.auto">validate</property>
+
 		<property name="hibernate.connection.CharSet">utf8</property>
-        <property name="hibernate.connection.characterEncoding">utf8</property>
-        <property name="hibernate.connection.useUnicode">true</property>
+		<property name="hibernate.connection.characterEncoding">utf8</property>
+		<property name="hibernate.connection.useUnicode">true</property>
 
 		<mapping class="entity.Film" />
 		<mapping class="entity.Person" />

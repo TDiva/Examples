@@ -19,7 +19,7 @@ public class FilmGenre {
 	@EmbeddedId
 	private FilmGenreId id = new FilmGenreId();
 
-	@Column(name = "level")
+	@Column(name = "genre_level")
 	private Long level;
 	
 	public FilmGenre() {

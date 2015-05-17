@@ -36,7 +36,7 @@ import org.hibernate.annotations.GenericGenerator;
 				+ "film.year as year, "
 				+ "film.country as country "
 				+ "from Film film "
-				+ "where film.year = YEAR(NOW()) - 1 or film.year = YEAR(NOW())")
+				+ "where film.year = YEAR(:time) - 1 or film.year = YEAR(:time)")
 
 })
 @Entity

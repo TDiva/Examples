@@ -13,11 +13,10 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
-@NamedQuery(name = Person.GET_ACTORS_DIRECT, query = "select p.id as id, "
+@NamedQuery(name = Person.GET_ACTORS_DIRECT, query = "select distinct p.id as id, "
 		+ "p.originalName as originalName, "
 		+ "p.russianName as russianName "
-		+ "from Person p inner join p.filmsActed a inner join p.filmsDirected d "
-		+ "group by p.id") 
+		+ "from Person p inner join p.filmsActed a inner join p.filmsDirected d ") 
 @Entity
 @Table(name = "actors")
 public class Person {

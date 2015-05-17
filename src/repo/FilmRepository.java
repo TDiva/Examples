@@ -1,5 +1,6 @@
 package repo;
 
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -47,18 +48,18 @@ public class FilmRepository {
 		getSession().getTransaction().commit();
 	}
 
-	public void deleteGenreRate(Long id) {
+	public void deleteGenreRate(Long long1) {
 		getSession().beginTransaction();
 		Query q = getSession().createSQLQuery(
-				"delete from genre_rate where film_id = " + id);
+				"delete from genre_rate where film_id = " + long1);
 		q.executeUpdate();
 		getSession().getTransaction().commit();
 	}
 
-	public void deleteMedia(Long id) {
+	public void deleteMedia(Long long1) {
 		getSession().beginTransaction();
 		Query q = getSession().createSQLQuery(
-				"delete from video where film_id = " + id);
+				"delete from video where film_id = " + long1);
 		q.executeUpdate();
 		getSession().getTransaction().commit();
 	}
@@ -82,15 +83,16 @@ public class FilmRepository {
 		getSession().getTransaction().commit();
 		return f;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public List<Film> findNew() {
 		getSession().beginTransaction();
-		
+
 		Query q = getSession().getNamedQuery(Film.GET_NEW_FILMS);
+		q.setDate("time", new Date());
 		q.setResultTransformer(Transformers.aliasToBean(Film.class));
 		List<Film> f = q.list();
-		
+
 		getSession().getTransaction().commit();
 		return f;
 	}
